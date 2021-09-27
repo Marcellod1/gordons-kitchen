@@ -5,10 +5,10 @@ var tally = 0;
 buttonImg.addEventListener("mousedown", event => {
     tally++;
     console.log(`The button has been clicked ${tally} times(s)`);
-    buttonImg.src = "/resources/img/red-button-pressed.png";
+    buttonImg.src = "resources/img/red-button-pressed.png";
 
     var soundClip = new Howl({
-        src: ['/resources/sounds/waterphone.mp3']
+        src: ['resources/sounds/waterphone.mp3']
       });
 
     soundClip.play();
@@ -17,5 +17,5 @@ buttonImg.addEventListener("mousedown", event => {
 
 // Change img source to default button on mouse up
 buttonImg.addEventListener("mouseup", event => {
-    buttonImg.src = "/resources/img/red-button.png";
+    buttonImg.src = "resources/img/red-button.png";
 });
