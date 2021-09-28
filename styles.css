@@ -68,8 +68,13 @@ body {
     position: absolute;
     width: auto;
     height: 150px;
-    left: -30px;
+    left: -40px;
     bottom: -25px;
 }
 
+#button {
+    width: 100px;
+    margin: 25px;
 
+
+}
