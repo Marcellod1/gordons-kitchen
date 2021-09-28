@@ -1,37 +1,69 @@
+.main-grid-container {
+    display: grid;
+    grid-template-areas:
+      'header header header'
+      'main main main'
+      'footer footer footer';
+    text-align: center;
+}
+
+.header {
+    grid-area: header;
+    padding: 5px;
+}
+
+.left {
+    grid-area: left;
+    padding: 5px;
+}
+
+.main {
+    position: relative;
+    grid-area: main;
+    padding: 5px 100px;
+}
+
+.right {
+    grid-area: right;
+    padding: 5px;
+}
+
+.footer {
+    grid-area: footer;
+    padding: 5px;
+}
+
+
 body {
     background-color: #69F7BE;
-    color: black;
+    color: white;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
+#button{
+    position: absolute;
+    width: 10%;
+    top: 50%;
+    left: 45%;
 
 }
 
-.grid-left-sidebar {
-    grid-column: 1;
-    grid-row-start: 1;
-    grid-row-end: -1;
+
+
+
+
+
+/* Outlined text courtesy of https://stackoverflow.com/questions/4919076/outline-effect-to-text */
+.text-outlined {
+    color: white;
+    text-shadow: black 1px 1px 3px;
+    -webkit-font-smoothing: antialiased
 }
 
-.grid-right-sidebar {
-    grid-column: 3;
-    grid-row-start: 1;
-    grid-row-end: -1;
+.text-absolute {
+    position: absolute;
 }
 
-
-.grid-top-mid {
-    grid-column: 2;
-    grid-row: 1;
-    text-align: center;
-}
-
-.grid-center {
-    grid-column: 2;
-    grid-row: 2;
-    text-align: center;
+.shadowed {
+    box-shadow: 3px 3px 5px black;
 }
