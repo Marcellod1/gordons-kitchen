@@ -1,18 +1,37 @@
+/* Global State */
+var playing = true;
+
+/* Animation Constants */
+const meterStartOffset = -40;
+const meterEndOffset = 620;
+const updateMsecs = 20;
+
 $(document).ready(function(){
+    /* Button mousedown event */
+    $("#button").mousedown(function(){
+        $("#button").attr("src","resources/img/red-button-pressed.png");
+        console.log("Button Pressed");
 
-    /* Animation Constants*/
-    const meterStartOffset = -40;
-    const meterEndOffset = 620;
-    const updateMsecs = 20;
-    
-    /* Animation Variables*/
-    // NOTE: Change these depending on the difficulty?
+        var soundClip = new Howl({
+            src: ['resources/sounds/waterphone.mp3']
+        });
+        soundClip.play();
+    });
+
+    /* Button mouseup event */
+    $("#button").mouseup(function(){
+        $("#button").attr("src","resources/img/red-button.png");
+        console.log("Button Up");
+        playing = false;
+    });
+
+
+    /* Animation */
     var offsetRate = 5;
-    var playing = true;
-
-
+    
     setInterval(function(play) {
-        if(!play){
+        
+        if(!playing){
             return;
         }
 
@@ -25,19 +44,5 @@ $(document).ready(function(){
     }, updateMsecs, playing);
 
 
-    /* Button mousedown event */
-    $("#button").mousedown(function(){
-        $("#button").attr("src","resources/img/red-button-pressed.png");
-        console.log("Button Pressed");
-        var soundClip = new Howl({
-            src: ['resources/sounds/waterphone.mp3']
-        });
-        soundClip.play();
-    });
 
-    /* Button mouseup event */
-    $("#button").mouseup(function(){
-        $("#button").attr("src","resources/img/red-button.png");
-        console.log("Button Up");
-    });
 });
