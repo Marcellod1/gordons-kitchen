@@ -11,15 +11,6 @@ body {
     -webkit-font-smoothing: antialiased
 }
 
-.text-absolute {
-    position: absolute;
-}
-
-.shadowed {
-    box-shadow: 3px 3px 5px black;
-}
-
-
 .main-grid-container {
     display: grid;
     grid-template-areas:
@@ -75,6 +66,4 @@ body {
 #button {
     width: 100px;
     margin: 25px;
-
-
 }
