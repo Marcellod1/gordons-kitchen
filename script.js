@@ -2,33 +2,42 @@ class MeterAnimation {
     constructor(meterStartOffset, meterEndOffset, rate) {
       this.startOffset = meterStartOffset;
       this.endOffset = meterEndOffset;
+      this.currOffset = meterStartOffset;
+
       this.offsetRate = rate;
       this.isPlaying = true;
     }
 
+    /* Increments the "meter-indicator" position each time this is called 
+     * Returns the updated offset for the indicator
+     */
     update(){
         if(!this.isPlaying){
             return;
         }
+        var updateMeterOffset =  this.currOffset + this.offsetRate;
 
-        var currMeterOffset = parseInt($('#meter-indicator').css("left"));
-        var updateMeterOffset =  currMeterOffset + this.offsetRate;
-
-        if(updateMeterOffset < this.endOffset){
-            $('#meter-indicator').css("left", currMeterOffset + this.offsetRate);
+        if(updateMeterOffset > this.endOffset){
+            updateMeterOffset = this.endOffset;
         }
+
+        this.currOffset = updateMeterOffset;
+        return updateMeterOffset;
     }
 
+    /* Stops the animation. Each subsequent call of this.update() will have no effect */
     stop(){
         this.isPlaying = false;
     }
 
+    /* Starts the animation. Each subsequent call of this.update() will update the animation */
     start(){
         this.isPlaying = true;
     }
 
+    /* Resets the "meter-indicator" position to the startig offset for the animation */
     reset(){
-        $('#meter-indicator').css("left", this.startOffset);
+        this.currMeterOffset = this.meterStartOffset;
     }
 }
 
@@ -37,13 +46,16 @@ $(document).ready(function(){
     /* Animation Constants */
     const meterStartOffset = -40;
     const meterEndOffset = 620;
-    const meterRate = 5;
-    const updateMillis = 20;
 
+    /* Animation Variables */
+    var meterRate = 5;
+    var updateMillis = 20;
     var anim = new MeterAnimation(meterStartOffset, meterEndOffset, meterRate);
     
+    /* Update animation every "updateMillis" milliseconds*/
     setInterval(function(){
-        anim.update()
+        var newOffset = anim.update();
+        $('#meter-indicator').css("left", newOffset);
     }, updateMillis);
 
     /* Button mousedown event */
