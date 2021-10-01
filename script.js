@@ -80,6 +80,7 @@ class MeterGame{
 }
 
 
+/* Run when the document is ready */
 $(document).ready(function(){
 
    /* Sounds */
@@ -98,8 +99,8 @@ $(document).ready(function(){
     /* Animation Constants */
     const meterStartOffset = -40;
     const meterEndOffset = 620;
-    const meterRate = 5;
-    const acceptRegionSize = 75;
+    const meterRate = 6;
+    const acceptRegionSize = 50;
     const updateMillis = 10;
 
     /* Animation Variables */
@@ -129,7 +130,6 @@ $(document).ready(function(){
 
         // Handle the case where the indicator hits the end of the meter - reset the game.
         if(game.detectEnd()){
-
             quote = new Howl({src: "resources/sounds/you-donkey.mp3", volume: 0.5});
             quote.play();
             game.reset();
