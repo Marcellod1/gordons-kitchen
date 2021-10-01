@@ -22,7 +22,6 @@ body {
 
 .header {
     grid-area: header;
-    padding: 5px;
 }
 
 .left {
@@ -32,7 +31,7 @@ body {
 
 .main {
     grid-area: main;
-    padding: 25px 150px ;
+    padding: 10px 150px ;
 }
 
 .right {
@@ -46,13 +45,14 @@ body {
 }
 
 #meter-container {
+    z-index: 1;
     position: relative;
     width: 700px;
     height: 100px;
     background-image: url(resources/img/temp-meter.png);
     background-size: cover;
     background-repeat: no-repeat;
-    margin: auto;
+    margin: 10px auto;
   }
   
 #meter-indicator {
@@ -71,10 +71,42 @@ body {
     bottom: -70px;
 }
 
-
-
-
 #button {
-    width: 100px;
+    position: absolute;
+    width: 150px;
+    height: auto;
     margin: 25px;
+    left: 200px;
+    bottom: -10px;
+}
+
+
+#stove-container {
+    position: relative;
+    width: 629px;
+    height: 563px;
+    background-image: url(resources/img/stovetop.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+  }
+
+
+#pan {
+    position: absolute;
+    width: 900px;
+    height: auto;
+    margin: 25px;
+    left: 60px;
+    bottom: 190px;
+}
+
+
+#steak {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    margin: 25px;
+    left: 150px;
+    bottom: 220px;
 }

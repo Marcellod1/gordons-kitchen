@@ -119,11 +119,9 @@ $(document).ready(function(){
 
         // Check if the animation mouse indicator is in the region of acceptance.
         if(game.detectWin()){
-            console.log("WIN");
             soundClip = new Howl({src: "resources/sounds/perfectly_cooked_in_the_middle.mp3"});
 
         } else {
-            console.log("FAIL");
             soundClip = new Howl({src: "resources/sounds/you-donkey.mp3"}); 
         }
 
@@ -132,6 +130,7 @@ $(document).ready(function(){
         game.reset();
     });
     
+    /* Button mouseup event */
     $("#button").mouseup(function(){
         $("#button").attr("src","resources/img/knob-high.png");
     });
