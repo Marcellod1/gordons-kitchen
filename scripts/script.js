@@ -2,15 +2,15 @@
 $(document).ready(function(){
 
     /* Sounds */
-    var action =  new Howl({src: "resources/sounds/clicking.wav", volume: 1.0});
-    var quote =  new Howl({src: "resources/sounds/its_actually_quite_nice.mp3", volume: 0.1});
+    
+    var quote =  getRandomHowl("failure");
     ambient.play();
 
     /* Animation Constants */
     const meterStartOffset = -40;
     const meterEndOffset = 620;
-    const meterRate = 6;
-    const acceptRegionSize = 50;
+    const meterRate = 4;
+    const acceptRegionSize = 75;
     const updateMillis = 10;
 
     /* Game simulation Variables */

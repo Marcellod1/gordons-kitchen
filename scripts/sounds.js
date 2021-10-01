@@ -9,6 +9,12 @@ const ambient = new Howl({
     
 });
 
+const action =  new Howl({
+    src: "resources/sounds/clicking.wav", 
+    volume: 0.5
+});
+
+
 // Collection of Howls grouped by the context in which they are to be played
 const successHowls = [
     new Howl({
