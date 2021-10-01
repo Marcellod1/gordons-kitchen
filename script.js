@@ -95,7 +95,6 @@ $(document).ready(function(){
     var game = new MeterGame(meterStartOffset, meterEndOffset, meterRate, acceptRegionSize);
     console.log("Acceptance Region: " + game.acceptanceRegion);
     
-    
     /* Update animation every "updateMillis" milliseconds*/
     setInterval(function(){
         var newIndicatorOffset = game.update();
@@ -108,20 +107,22 @@ $(document).ready(function(){
 
     /* Button mouseup event */
     $("#button").mouseup(function(){
+        // Change png for the button, stop the indicator.
         $("#button").attr("src","resources/img/red-button.png");
         game.stop();
 
-        // Check if the animation mouse indicator is in the region of acceptance
+        var soundClip = new Howl({src: "resources/sounds/waterphone.mp3"});
+
+        // Check if the animation mouse indicator is in the region of acceptance.
         if(game.inAcceptanceRegion()){
             console.log("WIN");
+            soundClip = new Howl({src: "resources/sounds/its_actually_quite_nice.mp3"});
+
         } else {
             console.log("FAIL");
+            soundClip = new Howl({src: "resources/sounds/you-donkey.mp3"}); 
         }
-
-        var soundClip = new Howl({
-            src: ['resources/sounds/waterphone.mp3']
-        });
-        //soundClip.play();
+        soundClip.play();
     });    
 });
 
