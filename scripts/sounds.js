@@ -34,6 +34,18 @@ const successHowls = [
     new Howl({
         src: "resources/sounds/Tender.mp3",
         volume : 0.5
+    }),
+    new Howl({
+        src: "resources/sounds/SeriouslyWellDone.mp3",
+        volume : 1.0
+    }),
+    new Howl({
+        src: "resources/sounds/ThetemperatureIsSpotOn.mp3",
+        volume : 1.0
+    }),
+    new Howl({
+        src: "resources/sounds/GreatEffort.mp3",
+        volume : 1.0
     })
 ];
 
