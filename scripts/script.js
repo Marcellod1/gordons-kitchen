@@ -1,17 +1,9 @@
 /* Run when the document is ready */
 $(document).ready(function(){
 
-   /* Sounds */
-   var action =  new Howl({src: "resources/sounds/clicking.wav", volume: 1.0});
-   var quote =  new Howl({src: "resources/sounds/its_actually_quite_nice.mp3", volume: 0.1});
-
-    var ambient = new Howl({
-        src: "resources/sounds/sizzle.mp3",
-        autoplay: true,
-        loop: true,
-        volume: 0.1
-    });
-
+    /* Sounds */
+    var action =  new Howl({src: "resources/sounds/clicking.wav", volume: 1.0});
+    var quote =  new Howl({src: "resources/sounds/its_actually_quite_nice.mp3", volume: 0.1});
     ambient.play();
 
     /* Animation Constants */
@@ -48,7 +40,7 @@ $(document).ready(function(){
 
         // Handle the case where the indicator hits the end of the meter - reset the game.
         if(game.detectEnd()){
-            quote = new Howl({src: "resources/sounds/you-donkey.mp3", volume: 0.1});
+            quote = getRandomHowl("failure");
             quote.play();
             game.reset();
         }
@@ -64,10 +56,10 @@ $(document).ready(function(){
 
         // Check if the animation mouse indicator is in the region of acceptance.
         if(game.detectWin()){
-            quote = new Howl({src: "resources/sounds/perfectly_cooked_in_the_middle.mp3"});
+            quote = getRandomHowl("success");
 
         } else {
-            quote = new Howl({src: "resources/sounds/you-donkey.mp3"}); 
+            quote = getRandomHowl("failure");
         }
 
         // Play sounds depending on decided context, reset the game state
