@@ -14,7 +14,6 @@ class MeterGame{
         this.randomizeAcceptanceRegion();
     }
 
-
     /* Increments the "meter-indicator" position each time this is called 
      * Returns the updated offset for the indicator
      */
@@ -64,7 +63,7 @@ class MeterGame{
 
 
     /* checks if the currOffset for the indicator is within the acceptance region */
-    inAcceptanceRegion(){
+    detectWin(){
         if(this.currOffset <= this.acceptanceRegion[1] &&
            this.currOffset >= this.acceptanceRegion[0])
         {
@@ -74,6 +73,10 @@ class MeterGame{
         {
             return false;
         }
+    }
+
+    detectEnd(){
+        return this.currOffset >= this.endOffset;
     }
 
     /* calculate the meter's total length and return it as an absolute value */
@@ -93,7 +96,7 @@ $(document).ready(function(){
 
     /* Animation Variables */
     var game = new MeterGame(meterStartOffset, meterEndOffset, meterRate, acceptRegionSize);
-    console.log("Acceptance Region: " + game.acceptanceRegion);
+    var soundClip = new Howl({src: "resources/sounds/waterphone.mp3"});
     
     /* Update animation every "updateMillis" milliseconds*/
     setInterval(function(){
@@ -105,6 +108,14 @@ $(document).ready(function(){
         $('#order-ticket').css("left", meterStartOffset + newOrderOffset);
         $('#meter-indicator').css("left", newIndicatorOffset);
 
+        // Handle the case where the indicator hits the end of the meter.
+        if(game.detectEnd()){
+            soundClip = new Howl({src: "resources/sounds/bruh.mp3"});
+            soundClip.play();
+            game.reset();
+        }
+
+
     }, updateMillis);
 
 
@@ -114,10 +125,10 @@ $(document).ready(function(){
         $("#button").attr("src","resources/img/red-button.png");
         game.stop();
 
-        var soundClip = new Howl({src: "resources/sounds/waterphone.mp3"});
+        soundClip = new Howl({src: "resources/sounds/bruh.mp3"});
 
         // Check if the animation mouse indicator is in the region of acceptance.
-        if(game.inAcceptanceRegion()){
+        if(game.detectWin()){
             console.log("WIN");
             soundClip = new Howl({src: "resources/sounds/perfectly_cooked_in_the_middle.mp3"});
 
