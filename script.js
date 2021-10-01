@@ -122,7 +122,6 @@ $(document).ready(function(){
     /* Button mousedown event */
     $("#button").mousedown(function(){
         // Change png for the button, stop the indicator.
-        $("#button").attr("src","resources/img/red-button.png");
         game.stop();
 
         soundClip = new Howl({src: "resources/sounds/bruh.mp3"});
