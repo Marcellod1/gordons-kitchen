@@ -13,11 +13,27 @@ const ambient = new Howl({
 const successHowls = [
     new Howl({
         src: "resources/sounds/its_actually_quite_nice.mp3",
-        volume : 1.0
+        volume : 0.5
     }),
     new Howl({
         src: "resources/sounds/perfectly_cooked_in_the_middle.mp3",
-        volume : 1.0
+        volume : 0.5
+    }),
+    new Howl({
+        src: "resources/sounds/Bloody_Delicious.mp3",
+        volume : 0.5
+    }),
+    new Howl({
+        src: "resources/sounds/Phenomenal.mp3",
+        volume : 0.5
+    }),
+    new Howl({
+        src: "resources/sounds/Spot_on.mp3",
+        volume : 0.5
+    }),
+    new Howl({
+        src: "resources/sounds/Tender.mp3",
+        volume : 0.5
     })
 ];
 
@@ -29,19 +45,19 @@ const failureHowls = [
     }),
     new Howl({
         src: "resources/sounds/disaster.mp3",
-        volume : 0.5
+        volume : 0.1
     }),
     new Howl({
         src: "resources/sounds/hey-bozo.mp3",
-        volume : 0.5
+        volume : 0.1
     }),
     new Howl({
         src: "resources/sounds/its-ridiculous.mp3",
-        volume : 0.5
+        volume : 0.1
     }),
     new Howl({
         src: "resources/sounds/plonker-twat.mp3", 
-        volume : 0.5
+        volume : 0.1
     }),
     new Howl({
         src: "resources/sounds/wooh.mp3",
@@ -49,23 +65,33 @@ const failureHowls = [
     }),
     new Howl({
         src: "resources/sounds/you-need-therapy.mp3",
-        volume : 0.5
+        volume : 0.1
     }),
     new Howl({
         src: "resources/sounds/can-someone-stop-this-guy.mp3", 
-        volume : 0.5
+        volume : 0.1
     }),
     new Howl({
         src: "resources/sounds/crap-on-top-of-crap-on-top-of-crap-on-top-of-crap.mp3",
-        volume : 0.5
+        volume : 0.1
     }),
     new Howl({
         src: "resources/sounds/absolutely-pathetic.mp3",
+        volume : 0.1
+    }),
+    new Howl({
+        src: "resources/sounds/get-out.mp3",
+        volume : 0.1
+    }),
+    new Howl({
+        src: "resources/sounds/hes-in-denial.mp3",
+        volume : 0.1
+    }),
+    new Howl({
+        src: "resources/sounds/oh-my-god.mp3",
         volume : 0.5
-
     })
 ];
-
 
 /* Returns a random howl from the collection specified as a string parameter "success" or "failure"*/
 function getRandomHowl(type){
