@@ -15,6 +15,7 @@ $(document).ready(function(){
 
     /* Animation Variables */
     var game = new MeterGame(meterStartOffset, meterEndOffset, meterRate, acceptRegionSize);
+    var streak = 0;
     
     /* Update animation every "updateMillis" milliseconds*/
     setInterval(function(){

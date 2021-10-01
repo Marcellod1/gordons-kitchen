@@ -24,16 +24,29 @@
 
     <div class="main">
         <div id="meter-container">
-            <img src="resources/img/order-ticket.png" alt="meter-indicator" id="order-ticket">
+            <img src="resources/img/order-ticket.png" alt="order-ticket" id="order-ticket">
             <img src="resources/img/meter-indicator.png" alt="meter-indicator" id="meter-indicator">
         </div>     
 
         <div id="stove-container">
-            <img src="resources/img/pan.png" alt="meter-indicator" id="pan">
-            <img src="resources/img/steak-raw.png" alt="meter-indicator" id="steak">
-            <img src="resources/img/knob-high.png" alt="red-button" id="button">
+            <img src="resources/img/pan.png" alt="pan" id="pan">
+            <img src="resources/img/steak-raw.png" alt="steak-raw" id="steak">
+            <img src="resources/img/knob-high.png" alt="knob-high" id="button">
         </div>
-    </div> 
+    </div>
+
+    <div class="right">
+        <div id="score-container">
+            <img src="resources/img/gordon.png" alt="Ramsay" id="gordon">  
+            <div id="score-board">
+                <h1 class="text-outlined">Current Streak: <h1 id="streak">0</h1></h1>
+                <h1 class="text-outlined">Highest: <h1 id="high-score">0</h1></h1>
+            </div>
+        </div>
+
+
+    </div>
+
 
     <!-- include custom javascript -->
     <script src="scripts/meter-game.js"></script>

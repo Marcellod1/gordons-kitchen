@@ -14,9 +14,9 @@ body {
 .main-grid-container {
     display: grid;
     grid-template-areas:
-      'header header header'
-      'main main main'
-      'footer footer footer';
+      'header header header header'
+      'left main main right'
+      'footer footer footer footer';
     text-align: center;
 }
 
@@ -31,7 +31,6 @@ body {
 
 .main {
     grid-area: main;
-    padding: 10px 150px ;
 }
 
 .right {
@@ -43,6 +42,7 @@ body {
     grid-area: footer;
     padding: 5px;
 }
+
 
 #meter-container {
     z-index: 1;
@@ -110,3 +110,32 @@ body {
     left: 150px;
     bottom: 220px;
 }
+
+
+#score-container{
+    z-index: -1;
+    position:relative;
+    margin: auto;
+}
+
+#score-board{
+    width: 300px;
+    height: auto;
+    background-color:black;
+    border: 5px solid;
+    border-color: white;
+    border-radius: 10px;
+    padding: 3px;
+    margin: auto;
+}
+
+
+#gordon{
+    z-index: -1;
+    position: relative;
+    width: 300px;
+    height: auto;
+    margin: auto;
+}
+
+
