@@ -8,9 +8,9 @@ class MeterGame{
         this.regionSize = acceptRegionSize;
 
         this.acceptanceRegion = []
+
         this.currOffset = meterStartOffset;
         this.isPlaying = true;
-
         this.randomizeAcceptanceRegion();
     }
 
@@ -45,20 +45,17 @@ class MeterGame{
     }
 
 
-    /* Resets the "meter-indicator" position to the startig offset for the animation */
+    /* Resets the "meter-indicator" position to the starting offset for the animation */
     reset(){
         this.currOffset = this.meterStartOffset;
+        this.isPlaying = true;
         this.randomizeAcceptanceRegion();
-    }
-
-    get meterLength(){
-        return Math.abs(this.endOffset - this.startOffset);
     }
 
 
     /* Randomizes the acceptance region offsets */
     randomizeAcceptanceRegion(){
-        const min = this.startOffset + this.regionSize;
+        const min = this.startOffset + this.meterLength * 0.25;
         const max = this.endOffset - this.regionSize;
         const regionStart = Math.floor(Math.random() * (max - min) + min);
 
@@ -78,6 +75,11 @@ class MeterGame{
             return false;
         }
     }
+
+   
+    get meterLength(){
+        return Math.abs(this.endOffset - this.startOffset);
+    }
 }
 
 
@@ -86,39 +88,40 @@ $(document).ready(function(){
     const meterStartOffset = -40;
     const meterEndOffset = 620;
     const meterRate = 5;
-    const acceptRegionSize = meterRate * 10;
+    const acceptRegionSize = meterRate * 15;
     const updateMillis = 10;
 
     /* Animation Variables */
     var game = new MeterGame(meterStartOffset, meterEndOffset, meterRate, acceptRegionSize);
     console.log("Acceptance Region: " + game.acceptanceRegion);
-
+    
+    
     /* Update animation every "updateMillis" milliseconds*/
     setInterval(function(){
-        var newOffset = game.update();
-        $('#meter-indicator').css("left", newOffset);
-        console.log( game.currOffset + " " + game.inAcceptanceRegion());
+        var newIndicatorOffset = game.update();
+        var newOrderOffset = Math.floor((game.acceptanceRegion[0] + game.acceptanceRegion[1])/2);
+        $('#order-ticket').css("left", meterStartOffset + newOrderOffset);
+        $('#meter-indicator').css("left", newIndicatorOffset);
 
     }, updateMillis);
 
-    /* Button mousedown event */
-    $("#button").mousedown(function(){
-        $("#button").attr("src","resources/img/red-button-pressed.png");
-        console.log("Button Down");
-    });
 
     /* Button mouseup event */
     $("#button").mouseup(function(){
         $("#button").attr("src","resources/img/red-button.png");
-        console.log("Button Up");
         game.stop();
 
         // Check if the animation mouse indicator is in the region of acceptance
-        
+        if(game.inAcceptanceRegion()){
+            console.log("WIN");
+        } else {
+            console.log("FAIL");
+        }
+
         var soundClip = new Howl({
             src: ['resources/sounds/waterphone.mp3']
         });
-        soundClip.play();
+        //soundClip.play();
     });    
 });
 

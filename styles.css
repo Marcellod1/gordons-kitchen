@@ -63,6 +63,17 @@ body {
     bottom: -25px;
 }
 
+#order-ticket {
+    position: absolute;
+    width: auto;
+    height: 150px;
+    left: -40px;
+    bottom: -70px;
+}
+
+
+
+
 #button {
     width: 100px;
     margin: 25px;
