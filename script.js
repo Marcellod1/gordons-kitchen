@@ -81,6 +81,20 @@ class MeterGame{
 
 
 $(document).ready(function(){
+
+   /* Sounds */
+   var action =  new Howl({src: "resources/sounds/clicking.wav", volume: 1.0});
+   var quote =  new Howl({src: "resources/sounds/its_actually_quite_nice.mp3", volume: 0.1});
+
+    var ambient = new Howl({
+        src: "resources/sounds/sizzle.mp3",
+        autoplay: true,
+        loop: true,
+        volume: 0.1
+    });
+
+    ambient.play();
+
     /* Animation Constants */
     const meterStartOffset = -40;
     const meterEndOffset = 620;
@@ -90,12 +104,10 @@ $(document).ready(function(){
 
     /* Animation Variables */
     var game = new MeterGame(meterStartOffset, meterEndOffset, meterRate, acceptRegionSize);
-    var soundClip = new Howl({src: "resources/sounds/waterphone.mp3"});
     
     /* Update animation every "updateMillis" milliseconds*/
     setInterval(function(){
-
-        // Update teh positions of the indicator and ticket depening on the updated game state.
+        // Update the positions of the indicator and ticket depening on the updated game state.
         var newIndicatorOffset = game.update();
         var newOrderOffset = Math.floor((game.acceptanceRegion[0] + game.acceptanceRegion[1])/2);
 
@@ -117,8 +129,9 @@ $(document).ready(function(){
 
         // Handle the case where the indicator hits the end of the meter - reset the game.
         if(game.detectEnd()){
-            soundClip = new Howl({src: "resources/sounds/bruh.mp3"});
-            soundClip.play();
+
+            quote = new Howl({src: "resources/sounds/you-donkey.mp3", volume: 0.5});
+            quote.play();
             game.reset();
         }
     }, updateMillis);
@@ -129,22 +142,22 @@ $(document).ready(function(){
         // Change png for the button, stop the indicator.
         $("#button").attr("src","resources/img/knob-off.png");
         game.stop();
-
-        soundClip = new Howl({src: "resources/sounds/bruh.mp3"});
+        action.play();
 
         // Check if the animation mouse indicator is in the region of acceptance.
         if(game.detectWin()){
-            soundClip = new Howl({src: "resources/sounds/perfectly_cooked_in_the_middle.mp3"});
+            quote = new Howl({src: "resources/sounds/perfectly_cooked_in_the_middle.mp3"});
 
         } else {
-            soundClip = new Howl({src: "resources/sounds/you-donkey.mp3"}); 
+            quote = new Howl({src: "resources/sounds/you-donkey.mp3"}); 
         }
 
         // Play sounds depending on decided context, reset the game state
-        soundClip.play();
+        quote.play();
         game.reset();
     });
     
+
     /* Button mouseup event */
     $("#button").mouseup(function(){
         $("#button").attr("src","resources/img/knob-high.png");
