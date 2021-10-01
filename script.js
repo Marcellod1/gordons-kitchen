@@ -1,5 +1,4 @@
 class MeterGame{
-
     /* Constructor */
     constructor(meterStartOffset, meterEndOffset, rate, acceptRegionSize) {
         this.startOffset = meterStartOffset;
@@ -31,18 +30,15 @@ class MeterGame{
         return updateMeterOffset;
     }
 
-
     /* Stops the animation. Each subsequent call of this.update() will have no effect */
     stop(){
         this.isPlaying = false;
     }
 
-
     /* Starts the animation. Each subsequent call of this.update() will update the animation */
     start(){
         this.isPlaying = true;
     }
-
 
     /* Resets the "meter-indicator" position to the starting offset for the animation */
     reset(){
@@ -50,7 +46,6 @@ class MeterGame{
         this.isPlaying = true;
         this.randomizeAcceptanceRegion();
     }
-
 
     /* Randomizes the acceptance region offsets */
     randomizeAcceptanceRegion(){
@@ -60,7 +55,6 @@ class MeterGame{
 
         this.acceptanceRegion = [regionStart, regionStart + this.regionSize];
     }
-
 
     /* checks if the currOffset for the indicator is within the acceptance region */
     detectWin(){
@@ -103,8 +97,6 @@ $(document).ready(function(){
         var newIndicatorOffset = game.update();
         var newOrderOffset = Math.floor((game.acceptanceRegion[0] + game.acceptanceRegion[1])/2);
 
-        console.log(newIndicatorOffset);
-
         $('#order-ticket').css("left", meterStartOffset + newOrderOffset);
         $('#meter-indicator').css("left", newIndicatorOffset);
 
@@ -114,14 +106,13 @@ $(document).ready(function(){
             soundClip.play();
             game.reset();
         }
-
-
     }, updateMillis);
 
 
     /* Button mousedown event */
     $("#button").mousedown(function(){
         // Change png for the button, stop the indicator.
+        $("#button").attr("src","resources/img/knob-off.png");
         game.stop();
 
         soundClip = new Howl({src: "resources/sounds/bruh.mp3"});
@@ -139,7 +130,11 @@ $(document).ready(function(){
         // Play sounds depending on decided context, reset the game state
         soundClip.play();
         game.reset();
-    });    
+    });
+    
+    $("#button").mouseup(function(){
+        $("#button").attr("src","resources/img/knob-high.png");
+    });
 });
 
 
