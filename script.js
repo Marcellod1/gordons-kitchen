@@ -94,13 +94,28 @@ $(document).ready(function(){
     
     /* Update animation every "updateMillis" milliseconds*/
     setInterval(function(){
+
+        // Update teh positions of the indicator and ticket depening on the updated game state.
         var newIndicatorOffset = game.update();
         var newOrderOffset = Math.floor((game.acceptanceRegion[0] + game.acceptanceRegion[1])/2);
 
         $('#order-ticket').css("left", meterStartOffset + newOrderOffset);
         $('#meter-indicator').css("left", newIndicatorOffset);
 
-        // Handle the case where the indicator hits the end of the meter.
+        // change the steak png at thresholds on the meter
+        const meterLength = game.meterLength;
+
+        if (newIndicatorOffset < meterLength * 0.25){
+            $('#steak').attr("src","resources/img/steak-raw.png");
+
+        } else if (newIndicatorOffset < meterLength * 0.5){
+            $('#steak').attr("src","resources/img/steak-med.png");
+            
+        } else {
+            $('#steak').attr("src","resources/img/steak-well.png");
+        }
+
+        // Handle the case where the indicator hits the end of the meter - reset the game.
         if(game.detectEnd()){
             soundClip = new Howl({src: "resources/sounds/bruh.mp3"});
             soundClip.play();
