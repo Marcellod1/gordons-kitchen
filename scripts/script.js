@@ -13,7 +13,7 @@ $(document).ready(function(){
     const acceptRegionSize = 50;
     const updateMillis = 10;
 
-    /* Animation Variables */
+    /* Game simulation Variables */
     var game = new MeterGame(meterStartOffset, meterEndOffset, meterRate, acceptRegionSize);
     var streak = 0;
     
@@ -58,9 +58,21 @@ $(document).ready(function(){
         // Check if the animation mouse indicator is in the region of acceptance.
         if(game.detectWin()){
             quote = getRandomHowl("success");
+            streak = streak + 1;
 
         } else {
             quote = getRandomHowl("failure");
+            streak = 0;
+        }
+    
+        // Replace displayed streak with the current streak
+        $("#streak").text(streak);
+
+        // Replace high score 
+        var currHigh = $("#high-score").text();
+
+        if (streak > currHigh){
+            $("#high-score").text(streak);
         }
 
         // Play sounds depending on decided context, reset the game state
