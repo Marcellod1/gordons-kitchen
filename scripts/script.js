@@ -29,13 +29,17 @@ $(document).ready(function(){
         const meterLength = game.meterLength;
 
         if (newIndicatorOffset < meterLength * 0.25){
-            $('#steak').attr("src","resources/img/steak-raw.png");
-
+            $('#steak-raw').show();
+            $('#steak-med').hide();
+            $('#steak-well').hide();
         } else if (newIndicatorOffset < meterLength * 0.5){
-            $('#steak').attr("src","resources/img/steak-med.png");
-            
+            $('#steak-raw').hide();
+            $('#steak-med').show();
+            $('#steak-well').hide();
         } else {
-            $('#steak').attr("src","resources/img/steak-well.png");
+            $('#steak-raw').hide();
+            $('#steak-med').hide();
+            $('#steak-well').show();
         }
 
         // Handle the case where the indicator hits the end of the meter - reset the game.

@@ -102,7 +102,7 @@ body {
 }
 
 
-#steak {
+.steak{
     position: absolute;
     width: 300px;
     height: auto;
