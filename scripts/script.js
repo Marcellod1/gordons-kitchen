@@ -10,7 +10,7 @@ $(document).ready(function(){
     const meterEndOffset = 620;
     const meterRate = 5;
     const acceptRegionSize = 75;
-    const updateMillis = 20;
+    const updateMillis = 15;
 
     /* Game simulation Variables */
     var game = new MeterGame(meterStartOffset, meterEndOffset, meterRate, acceptRegionSize);
