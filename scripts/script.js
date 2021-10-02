@@ -2,16 +2,15 @@
 $(document).ready(function(){
 
     /* Sounds */
-    
     var quote =  getRandomHowl("failure");
     ambient.play();
 
     /* Animation Constants */
     const meterStartOffset = -40;
     const meterEndOffset = 620;
-    const meterRate = 4;
+    const meterRate = 5;
     const acceptRegionSize = 75;
-    const updateMillis = 10;
+    const updateMillis = 20;
 
     /* Game simulation Variables */
     var game = new MeterGame(meterStartOffset, meterEndOffset, meterRate, acceptRegionSize);
@@ -42,6 +41,8 @@ $(document).ready(function(){
         // Handle the case where the indicator hits the end of the meter - reset the game.
         if(game.detectEnd()){
             quote = getRandomHowl("failure");
+            streak = 0;
+            $("#streak").text(streak);
             quote.play();
             game.reset();
         }
