@@ -44,9 +44,10 @@ $(document).ready(function(){
 
         // Handle the case where the indicator hits the end of the meter - reset the game.
         if(game.detectEnd()){
-            quote = getRandomHowl("failure");
             streak = 0;
             $("#streak").text(streak);
+            $("#gordon").attr("src","resources/img/gordon.png");
+            quote = getRandomHowl("failure");
             quote.play();
             game.reset();
         }
