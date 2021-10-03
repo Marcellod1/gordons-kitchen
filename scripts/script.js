@@ -63,10 +63,12 @@ $(document).ready(function(){
         // Check if the animation mouse indicator is in the region of acceptance.
         if(game.detectWin()){
             quote = getRandomHowl("success");
+            $("#gordon").attr("src","resources/img/nightmareramsay.png");
             streak = streak + 1;
 
         } else {
             quote = getRandomHowl("failure");
+            $("#gordon").attr("src","resources/img/gordon.png");
             streak = 0;
         }
     
